@@ -1,0 +1,12 @@
+{
+    "name": "ibu/webdevproject",
+    "description": "Web Development Project",
+    "license": "Apache2",
+    "authors": [
+        {
+            "name": "muky1",
+            "email": "muhamed.begic@stu.ibu.edu.ba"
+        }
+    ],
+    "require": {}
+}
