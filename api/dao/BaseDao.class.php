@@ -1,23 +1,22 @@
 <?php
 
+require_once dirname(__FILE__)."/../config.php";
+
 class BaseDao {
-  public function __construct(){
 
-$servername = "localhost";
-$username = "root";
-$password = "begic123";
+private $connection;
 
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=webproject", $username, $password);
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Connected successfully";
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
-}
+public function __construct(){
 
-
-
+  try {
+    $this->$connection = new PDO("mysql:host=.Config::DB_HOST.;dbname=".Config::DB_SCHEME, Config::DB_USERNAME, Config::DB_PASSWORD);
+    $this->$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected";
+  }   catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
   }
+
+}
 
   public function insert(){
 
@@ -30,7 +29,7 @@ try {
   }
 
   public function query(){
-
+    // SELECT * FROM users WHERE id=7;
 
   }
 
