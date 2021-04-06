@@ -2,7 +2,7 @@
 
 class BaseDao {
   public function __construct(){
-    <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "begic123";
@@ -14,7 +14,7 @@ try {
 } catch(PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
 }
-?>
+
 
 
   }
