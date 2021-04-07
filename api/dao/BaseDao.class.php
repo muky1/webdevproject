@@ -13,6 +13,7 @@ public function __construct(){
     $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected";
   }   catch(PDOException $e) {
+    throw $e;
     echo "Connection failed: " . $e->getMessage();
   }
 
@@ -28,12 +29,16 @@ public function __construct(){
 
   }
 
-  public function query(){
-    // SELECT * FROM users WHERE id=7;
+  public function query($query, $params){
+    $stmt = $this->connection->prepare($query);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   }
 
-  public function query_unique(){
+  public function query_unique($query, $params){
+    $results = $this->query($query, $params);
+    return reset($results);
 
 
   }
