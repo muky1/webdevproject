@@ -14,11 +14,7 @@ class UserDao extends BaseDao{
 
 
   public function add_user($user){
-    $sql = "INSERT INTO users (name, surname, password, email) VALUES (:name, :surname, :password, :email)";
-    $stmt= $this->connection->prepare($sql);
-    $stmt->execute($user);
-    $user['id'] = $this->connection->lastInsertId();
-    return $user;
+    return $this->insert("users", $user);
   }
 
 
