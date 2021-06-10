@@ -9,9 +9,9 @@ require_once dirname(__FILE__). "/dao/AccountDao.class.php";
 
 $dao = new AccountDao();
 
-$dao->add_account([
+$dao->add([
   "name" => "Green Hosting",
-  "created_at" => date("Y-m-d H-i-s")
+  "created_at" => date("Y-m-d H:i:s")
 ]);
 
 $accounts = $dao->get_all_accounts();
