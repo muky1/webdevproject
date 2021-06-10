@@ -5,29 +5,18 @@ error_reporting (E_ALL);
 
 
 require_once dirname(__FILE__). "/dao/UserDao.class.php";
+require_once dirname(__FILE__). "/dao/AccountDao.class.php";
 
-$user_dao = new UserDao();
+$dao = new AccountDao();
 
-//$user = $user_dao->get_user_by_id("1");
+$dao->add_account([
+  "name" => "Green Hosting",
+  "created_at" => date("Y-m-d H-i-s")
+]);
 
-$user1 = [
-  "name" => "Amar",
-  "surname" => "Bektas",
-  "password" => "pass123",
-  "email" => "email123@gmail.com",
+$accounts = $dao->get_all_accounts();
 
-];
-
-
-
-
-
-
-$user = $user_dao->add_user($user1);
-
-//$user_dao->get_user_by_email("muhamed.begic01@gmail.com");
-
-print_r($user);
+print_r($accounts);
 
 
 
