@@ -8,8 +8,5 @@ class MoviesDao extends BaseDao{
     parent::__construct("movies");
   }
 
-  public function get_all_movies(){
-    return $this->query("SELECT * FROM movies", []);
-  }
-  }
+}
  ?>

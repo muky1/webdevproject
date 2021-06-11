@@ -86,6 +86,8 @@ public function __construct($table){
     return $this->query_unique("SELECT * FROM ".$this->table." WHERE id = :id", ["id" => $id]);
   }
 
-
+  public function get_all(){
+    return $this->query("SELECT * FROM " .$this->table, []);
+  }
 }
  ?>

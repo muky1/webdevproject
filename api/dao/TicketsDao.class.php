@@ -8,9 +8,6 @@ class TicketsDao extends BaseDao{
     parent::__construct("tickets");
   }
 
-  public function get_all_tickets(){
-    return $this->query("SELECT * FROM tickets", []);
-  }
-  }
+}
 
 ?>

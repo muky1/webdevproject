@@ -8,9 +8,6 @@ class CreditCardsDao extends BaseDao{
     parent::__construct("credit_cards");
   }
 
-  public function get_all_credit_cards(){
-    return $this->query("SELECT * FROM credit_cards", []);
-  }
-  }
+}
 
  ?>

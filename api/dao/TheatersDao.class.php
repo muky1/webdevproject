@@ -8,9 +8,6 @@ class TheatersDao extends BaseDao{
     parent::__construct("theaters");
   }
 
-  public function get_all_theaters(){
-    return $this->query("SELECT * FROM theaters", []);
-  }
 }
 
 ?>

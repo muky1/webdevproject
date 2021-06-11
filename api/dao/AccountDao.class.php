@@ -8,11 +8,6 @@ class AccountDao extends BaseDao{
     parent::__construct("accounts");
   }
 
-  public function get_all_accounts(){
-
-    return $this->query("SELECT * FROM accounts", []);
-  }
-
 }
 
 
