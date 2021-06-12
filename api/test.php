@@ -8,27 +8,13 @@ require_once dirname(__FILE__). "/dao/UserDao.class.php";
 require_once dirname(__FILE__). "/dao/AccountDao.class.php";
 require_once dirname(__FILE__). "/dao/CampaignDao.class.php";
 
-$dao = new CampaignDao();
+$dao = new AccountDao();
 
-$campaign = [
-  "name" => "Midnight Showing of The Hunger Games",
-  "account_id" => 1,
-  "start_date" => date("Y-m-d H:i:s")
-];
+$accounts = $dao->get_all($_GET['offset'], $_GET['limit']);
+
+//print_r($accounts);
 
 
-$dao -> update(1, [
-
-  "end_date" => "2021-06-10 00:00:00",
-  "status" => "EXPIRED"
-]);
-
-$campaign = $dao ->get_all_campaigns();    //add($campaign);
-
-
-
-print_r($campaign);
-
-
+echo json_encode($accounts, JSON_PRETTY_PRINT);
 
  ?>
