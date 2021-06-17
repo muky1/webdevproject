@@ -10,7 +10,7 @@ class AccountService extends BaseService {
     $this->dao = new AccountDao();
   }
 
-  public function get_accounts() {
+  public function get_accounts($search, $offset, $limit) {
     if ($search) {
       return $this->dao->get_accounts($search, $offset, $limit);
     }else {
