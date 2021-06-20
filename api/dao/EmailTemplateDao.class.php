@@ -8,7 +8,8 @@ class EmailTemplateDao extends BaseDao{
     parent::__construct("email_templates");
 }
 
-  public function get_email_templates($account_id, $offset, $limit, $search) {
+  public function get_email_templates($account_id, $offset, $limit, $search, $order) {
+    list($order_column, $order_direction) = self::parse_order($order);
 
     $params = ["account_id" => $account_id];
     $query = "SELECT *
@@ -19,7 +20,8 @@ class EmailTemplateDao extends BaseDao{
       $params['search'] = strtolower($search);
     }
 
-    $query .= "LIMIT ${limit} OFFSET ${offset}";
+    $query .="ORDER BY ${order_column} ${order_direction} ";
+    $query .="LIMIT ${limit} OFFSET ${offset}";
 
     return $this->query($query, $params);
   }
