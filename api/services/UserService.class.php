@@ -18,7 +18,7 @@ class UserService extends BaseService {
 
 
   try {
-    // open transaction here
+      $this->dao->beginTransaction();
 
       $account = $this->accountDao->add([
         "name" => $user['account'],
@@ -36,10 +36,10 @@ class UserService extends BaseService {
         "created_at" => date(Config::DATE_FORMAT),
         "token" => md5(random_bytes(16))
       ]);
-      // commit here
+      $this->dao->commit();
 
   } catch (\Exception $e) {
-    // rollback
+    $this->dao->rollBack();
     throw $e;
   }
 

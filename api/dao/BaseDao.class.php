@@ -15,6 +15,21 @@ protected $connection;
 
 private $table;
 
+  public function beginTransaction(){
+    //$this->connection->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+    $this->connection->beginTransaction();
+  }
+
+  public function commit(){
+    $this->connection->commit();
+    //$this->connection->setAttribute(PDO::ATTR_AUTOCOMMIT, 1);
+  }
+
+  public function rollBack(){
+    $this->connection->rollBack();
+    //$this->connection->setAttribute(PDO::ATTR_AUTOCOMMIT, 1);
+  }
+
   public function parse_order($order) {
     switch (substr($order, 0, 1)) {
       case '-': $order_direction = "ASC"; break;
@@ -33,6 +48,9 @@ private $table;
   try {
     $this->connection = new PDO("mysql:host=".Config::DB_HOST.";dbname=".Config::DB_SCHEME, Config::DB_USERNAME, Config::DB_PASSWORD);
     $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $this->connection->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+
     echo "Connected";
   }   catch(PDOException $e) {
     throw $e;
